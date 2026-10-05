@@ -1,0 +1,27 @@
+# Security: Block temporary, backup and cache files
+*.tmp
+*.bak
+*.log
+__pycache__/
+.venv/
+*.pyc
+
+# Block raw Excel and sensitive database dumps
+*.xlsx
+*.xls
+*.csv
+*.db
+*.sql
+
+# Allowed Dashboard and Pipeline files
+!index.html
+!data.js
+!assets/
+!assets/**
+!update_dashboard.py
+!gen_tables.py
+!run_sync.bat
+!changelogs/
+!changelogs/**
+!README.md
+!.gitignore
