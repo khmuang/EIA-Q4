@@ -47,16 +47,27 @@
 - อัปเดตโฟกัสกลุ่ม Heavy-Hitters: หัวข้อ 2.1 (3,152 เครื่อง) และ 7.1 (711 เครื่อง) รวม **3,863 เครื่อง คิดเป็น 75.9%** ของเป้าหมายทั้งหมดในไตรมาส
 - อัปเดตข้อความ Baseline Scope ในแถบหัวเรื่อง [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) เป็น `5,092 Targets` ให้ตรงกัน 100%
 
+#### 6. เพิ่มตารางสรุป "จำนวนที่ได้รับการอัพเดท (Passed)" ใน Terminal ผ่าน run_sync.bat
+- ปรับปรุง [update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py):
+  - เพิ่มฟังก์ชัน `print_sync_summary(multi_matrix)` เพื่อแสดงผลตารางสรุปแบบกระชับ 3 คอลัมน์ทันทีหลังจากการ Extract ข้อมูลเสร็จสิ้น:
+    - **Topic ID:** รหัสหัวข้อทั้ง 9 หัวข้อ (1.1, 1.2, 2 - 8)
+    - **Topic Name:** ชื่อหัวข้อการตรวจสอบ
+    - **จำนวนที่อัพเดทแล้ว (Passed):** แสดงเฉพาะจำนวนเครื่องที่ผ่านเกณฑ์หรือได้รับการแก้ไขแล้ว (Status Y / Passed)
+  - เพิ่มการจัดการ Encoding สำหรับ Windows Terminal (`sys.stdout.reconfigure(encoding='utf-8')` และการคำนวณ Display Width สำหรับสระ/วรรณยุกต์ภาษาไทย) เพื่อให้เส้นขอบตารางและตัวเลขจัดชิดขวาตรงกันเรียบร้อยสวยงาม
+- ปรับปรุง [run_sync.bat](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/run_sync.bat):
+  - เพิ่ม `chcp 65001 >nul` เพื่อรองรับการแสดงผลภาษาไทยใน Windows Command Prompt ได้อย่างสมบูรณ์แบบ
+
 ---
 
 ### 📂 รายการไฟล์ที่เกี่ยวข้อง (Files Touched)
 
 | สถานะ | ที่อยู่ไฟล์ | คำอธิบาย |
 | :--- | :--- | :--- |
+| **Updated** | [EIA_Q4/update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py) | เพิ่มฟังก์ชันจัดตารางสรุป 3 คอลัมน์แสดงจำนวนที่อัพเดทแล้ว (Passed) |
+| **Updated** | [EIA_Q4/run_sync.bat](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/run_sync.bat) | รองรับ UTF-8 (chcp 65001) และปรับแต่งขั้นตอนการซิงค์ |
 | **Updated** | [EIA_Q4/README.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/README.md) | อัปเดตตาราง Baseline Scope Targets เป็น 5,092 รายการ |
 | **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | อัปเดตแถบหัวเรื่องเป็น `5,092 Targets` |
 | **Created** | [EIA_Q4/.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/.gitignore) | ไฟล์คอนฟิก Git Ignore ประจำ EIA Q4 |
-| **Updated** | [EIA_Q4/run_sync.bat](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/run_sync.bat) | Batch Script อัปเกรดขั้นตอน Git Auto-Sync สู่ EIA-Q4 |
 | **Updated** | [.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/.gitignore) | Root Git Ignore เพิ่มการแยกโฟลเดอร์ EIA_Q4/ |
-| **Updated** | [EIA_Q4/changelogs/CHANGELOG_20261005.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261005.md) | บันทึกประวัติการย้ายและตั้งค่า Git ประจำวันที่ 5 ต.ค. 2026 |
-| **Committed** | `https://github.com/khmuang/EIA-Q4.git` | Pushed commits สู่ GitHub Branch `main` |
+| **Updated** | [EIA_Q4/changelogs/CHANGELOG_20261005.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261005.md) | บันทึกประวัติการปรับปรุงระบบประจำวันที่ 5 ต.ค. 2026 |
+

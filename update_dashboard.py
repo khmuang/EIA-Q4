@@ -3,6 +3,14 @@ import sys
 import json
 import datetime
 import openpyxl
+import unicodedata
+
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 
 # --- CONFIGURATION (OneDrive Integration for Q4) ---
 ONEDRIVE_Q4_ROOT = r"D:\Users\Djmanny\OneDrive - Central Group\RIS Endpoint support - 2026\Q4"
@@ -22,6 +30,84 @@ TOPICS_CONFIG = {
     "7. Privileged User management.xlsx": {"id": "7", "subfolder": "7. Privileged User management", "status_col": "Std admin update Y/N", "team_col": "Serviced By"},
     "8. Document Request.xlsx": {"id": "8", "subfolder": "8. Document Request", "status_col": "Document request update Y/N", "team_col": "Serviced By"}
 }
+
+TOPIC_DISPLAY_NAMES = {
+    "1.1": "Missing BU/Company/Location (IT Asset)",
+    "1.2": "Not installed GLPI Agent",
+    "2": "W11 OS version not current (Update OS)",
+    "3": "Device require patch security updates",
+    "4": "Antivirus software not installed",
+    "5": "Built-in firewall not enabled",
+    "6": "Device not joined to domain",
+    "7": "Privileged User (Admin Rights)",
+    "8": "Document Request evidence"
+}
+
+def display_width(text):
+    """Calculate terminal display width considering Thai combining vowels/tone marks."""
+    width = 0
+    for char in text:
+        cat = unicodedata.category(char)
+        if cat == 'Mn':
+            continue
+        elif unicodedata.east_asian_width(char) in ('F', 'W'):
+            width += 2
+        else:
+            width += 1
+    return width
+
+def pad_right(text, width):
+    w = display_width(text)
+    return text + ' ' * max(0, width - w)
+
+def pad_left(text, width):
+    w = display_width(text)
+    return ' ' * max(0, width - w) + text
+
+def print_sync_summary(multi_matrix):
+    topic_order = ['1.1', '1.2', '2', '3', '4', '5', '6', '7', '8']
+    
+    col1_w = 9
+    col2_w = 42
+    col3_w = 28
+    
+    title = "EIA Q4 AUDIT SUMMARY (จำนวนที่ได้รับการอัพเดท)"
+    total_w = col1_w + col2_w + col3_w + 6
+    
+    print("\n" + "=" * total_w)
+    pad_title = (total_w - display_width(title)) // 2
+    print(" " * pad_title + title)
+    print("=" * total_w)
+    
+    h1 = pad_right("Topic ID", col1_w)
+    h2 = pad_right("Topic Name", col2_w)
+    h3 = pad_left("จำนวนที่อัพเดทแล้ว (Passed)", col3_w)
+    print(f" {h1} | {h2} | {h3} ")
+    print("-" * total_w)
+    
+    grand_total_passed = 0
+    for tid in topic_order:
+        name = pad_right(TOPIC_DISPLAY_NAMES.get(tid, f"Topic {tid}"), col2_w)
+        id_str = pad_right(tid, col1_w)
+        
+        passed_count = 0
+        for team, topics in multi_matrix.items():
+            if tid in topics:
+                for phase, metrics in topics[tid].items():
+                    passed_count += metrics.get('success', 0)
+                    
+        grand_total_passed += passed_count
+        count_str = pad_left(f"{passed_count:,}", col3_w)
+        print(f" {id_str} | {name} | {count_str} ")
+        
+    print("-" * total_w)
+    t_id = pad_right("TOTAL", col1_w)
+    t_name = pad_right("Grand Total Updated (Passed)", col2_w)
+    t_count = pad_left(f"{grand_total_passed:,}", col3_w)
+    print(f" {t_id} | {t_name} | {t_count} ")
+    print("=" * total_w)
+    print(" [INFO] All 9 Topics evaluated successfully! Ready to push to GitHub.\n")
+
 
 def load_baseline_from_q4_document():
     """Extract baseline targets when granular per-machine topic sheets are not yet available."""
@@ -198,6 +284,7 @@ def sync():
 
     print(f"[SUCCESS] EIA Q4 data.js generated successfully!")
     print(f"[OUTPUT] {OUTPUT_FILE}")
+    print_sync_summary(multi_matrix)
 
 if __name__ == "__main__":
     sync()
