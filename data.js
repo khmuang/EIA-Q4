@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-05 10:16:32
+// Automatically generated for EIA Q4 at 2026-10-05 10:21:50
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -760,23 +760,23 @@ const DASHBOARD_DATA = {
         "8": {
             "Q4": {
                 "total": 5,
-                "success": 5,
+                "success": 0,
                 "bu_breakdown": {
                     "B2S": {
                         "total": 1,
-                        "success": 1
+                        "success": 0
                     },
                     "CDG": {
                         "total": 1,
-                        "success": 1
+                        "success": 0
                     },
                     "CFR": {
                         "total": 2,
-                        "success": 2
+                        "success": 0
                     },
                     "PWB": {
                         "total": 1,
-                        "success": 1
+                        "success": 0
                     }
                 }
             }
@@ -1058,11 +1058,11 @@ const DASHBOARD_DATA = {
         "8": {
             "Q4": {
                 "total": 5,
-                "success": 2,
+                "success": 0,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 3,
-                        "success": 1
+                        "success": 0
                     },
                     "CFR": {
                         "total": 1,
@@ -1070,7 +1070,7 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 1,
-                        "success": 1
+                        "success": 0
                     }
                 }
             }
@@ -1731,5 +1731,5 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-05 10:16:32';
+const LAST_UPDATED = '2026-10-05 10:21:50';
 const ACTIVE_QUARTER = 'Q4';
