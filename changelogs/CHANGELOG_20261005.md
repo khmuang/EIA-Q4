@@ -32,14 +32,31 @@
 #### 4. แยกการทำงานระหว่างโฟลเดอร์แม่ (EIA-Q3) และ EIA-Q4
 - เพิ่ม `EIA_Q4/` ลงใน `.gitignore` ของ Root Workspace เพื่อตัดขาดการผูกโยง ไม่ให้ Repo เดิมของ Q3 สับสนหรือมีผลกระทบต่อกัน
 
+#### 5. ปรับปรุงยอดตัวเลข Baseline Scope Targets ใน README.md และ index.html
+- ปรับปรุงตารางหัวข้อ **ขอบเขตเป้าหมาย EIA Q4 Baseline (Scope Targets)** ใน [README.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/README.md) จากเดิม 7,988 เครื่อง ให้เป็นยอดจริงที่สกัดได้จาก [data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js) รวม **5,092 เครื่อง**:
+  - **1.1 (IT Asset):** 152 เครื่อง
+  - **1.2 (GLPI Agent):** 50 เครื่อง
+  - **2.1 (OS Update):** 3,152 เครื่อง *(Heavy-Hitter #1: 61.9%)*
+  - **3.1 (Patch Updates):** 327 เครื่อง
+  - **4.1 (Antivirus):** 95 เครื่อง
+  - **5.1 (Firewall):** 567 เครื่อง
+  - **6.1 (Domain):** 23 เครื่อง
+  - **7.1 (Privileged User):** 711 เครื่อง *(Heavy-Hitter #2: 14.0%)*
+  - **8.1 (Document Request):** 15 เครื่อง
+  - **ยอดรวมทั้งสิ้น (Grand Total Scope):** **5,092 เครื่อง**
+- อัปเดตโฟกัสกลุ่ม Heavy-Hitters: หัวข้อ 2.1 (3,152 เครื่อง) และ 7.1 (711 เครื่อง) รวม **3,863 เครื่อง คิดเป็น 75.9%** ของเป้าหมายทั้งหมดในไตรมาส
+- อัปเดตข้อความ Baseline Scope ในแถบหัวเรื่อง [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) เป็น `5,092 Targets` ให้ตรงกัน 100%
+
 ---
 
 ### 📂 รายการไฟล์ที่เกี่ยวข้อง (Files Touched)
 
 | สถานะ | ที่อยู่ไฟล์ | คำอธิบาย |
 | :--- | :--- | :--- |
+| **Updated** | [EIA_Q4/README.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/README.md) | อัปเดตตาราง Baseline Scope Targets เป็น 5,092 รายการ |
+| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | อัปเดตแถบหัวเรื่องเป็น `5,092 Targets` |
 | **Created** | [EIA_Q4/.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/.gitignore) | ไฟล์คอนฟิก Git Ignore ประจำ EIA Q4 |
 | **Updated** | [EIA_Q4/run_sync.bat](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/run_sync.bat) | Batch Script อัปเกรดขั้นตอน Git Auto-Sync สู่ EIA-Q4 |
 | **Updated** | [.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/.gitignore) | Root Git Ignore เพิ่มการแยกโฟลเดอร์ EIA_Q4/ |
-| **Created** | [EIA_Q4/changelogs/CHANGELOG_20261005.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261005.md) | บันทึกประวัติการย้ายและตั้งค่า Git ประจำวันที่ 5 ต.ค. 2026 |
-| **Committed** | `https://github.com/khmuang/EIA-Q4.git` | Commit `d10ebd9` บน GitHub Branch `main` |
+| **Updated** | [EIA_Q4/changelogs/CHANGELOG_20261005.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261005.md) | บันทึกประวัติการย้ายและตั้งค่า Git ประจำวันที่ 5 ต.ค. 2026 |
+| **Committed** | `https://github.com/khmuang/EIA-Q4.git` | Pushed commits สู่ GitHub Branch `main` |
