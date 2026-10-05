@@ -13,18 +13,18 @@
 
 | หัวข้อ (Topic ID) | รายละเอียด (Description) | จำนวนเป้าหมาย (Total) | ความสำคัญ (Priority) | การดำเนินการ (Action) |
 | :---: | :--- | :---: | :---: | :--- |
-| **1.1** | Missing BU, Company, Location information | **229** | Low | กรอกข้อมูลในระบบ GLPI ให้สมบูรณ์ |
-| **1.2** | Not installed GLPI Agent | **69** | Low | ติดตั้ง GLPI Agent x64/x86 |
-| **2.1** | W11 OS version not current *(Heavy-Hitter)* | **3,125** | Medium | อัปเดต OS เป็นเวอร์ชันปัจจุบัน |
-| **3.1** | Device require patch security updates *(Heavy-Hitter)* | **2,558** | Medium | อัปเดต Patch ความปลอดภัย |
-| **4.1** | Antivirus software not installed / not standard | **486** | High | ติดตั้ง Antivirus ตามมาตรฐาน |
-| **5.1** | Built-in firewall not enabled / misconfigured | **429** | Medium | เปิดใช้งานและตั้งค่า Firewall |
-| **6.1** | Device not joined to domain | **30** | High | นำเครื่อง Join เข้า Domain |
-| **7.1** | Privileged User (Admin Rights) *(Heavy-Hitter)* | **1,053** | High | ปลดสิทธิ์ Admin สำหรับผู้ใช้ทั่วไป |
-| **8.1** | Document Request evidence | **9** | Medium | แนบเอกสารหลักฐานขออนุมัติ |
-| **รวม** | **เป้าหมายรวมทั้งหมด (Grand Total Scope)** | **7,988** | - | - |
+| **1.1** | Missing BU, Company, Location information | **152** | Low | กรอกข้อมูลในระบบ GLPI ให้สมบูรณ์ |
+| **1.2** | Not installed GLPI Agent | **50** | Low | ติดตั้ง GLPI Agent x64/x86 |
+| **2.1** | W11 OS version not current *(Heavy-Hitter)* | **3,152** | Medium | อัปเดต OS เป็นเวอร์ชันปัจจุบัน |
+| **3.1** | Device require patch security updates | **327** | Medium | อัปเดต Patch ความปลอดภัย |
+| **4.1** | Antivirus software not installed / not standard | **95** | High | ติดตั้ง Antivirus ตามมาตรฐาน |
+| **5.1** | Built-in firewall not enabled / misconfigured | **567** | Medium | เปิดใช้งานและตั้งค่า Firewall |
+| **6.1** | Device not joined to domain | **23** | High | นำเครื่อง Join เข้า Domain |
+| **7.1** | Privileged User (Admin Rights) *(Heavy-Hitter)* | **711** | High | ปลดสิทธิ์ Admin สำหรับผู้ใช้ทั่วไป |
+| **8.1** | Document Request evidence | **15** | Medium | แนบเอกสารหลักฐานขออนุมัติ |
+| **รวม** | **เป้าหมายรวมทั้งหมด (Grand Total Scope)** | **5,092** | - | - |
 
-> 🚨 **Heavy-Hitters Focus:** หัวข้อ 2.1 (OS Update: 3,125 เครื่อง) และ 3.1 (Patch: 2,558 เครื่อง) คิดเป็นกว่า **71.1%** ของเป้าหมายทั้งหมดในไตรมาสนี้
+> 🚨 **Heavy-Hitters Focus:** หัวข้อ 2.1 (OS Update: 3,152 เครื่อง) และ 7.1 (Privileged User: 711 เครื่อง) คิดเป็นกว่า **75.9%** ของเป้าหมายทั้งหมดในไตรมาสนี้
 
 ---
 
