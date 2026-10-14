@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-13 15:30:03
+// Automatically generated for EIA Q4 at 2026-10-14 09:30:04
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1727,5 +1727,5 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-13 15:30:03';
+const LAST_UPDATED = '2026-10-14 09:30:04';
 const ACTIVE_QUARTER = 'Q4';
