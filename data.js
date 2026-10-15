@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-14 15:30:06
+// Automatically generated for EIA Q4 at 2026-10-15 09:57:13
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1160,15 +1160,19 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 249,
-                "success": 27,
+                "success": 28,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
                         "success": 0
                     },
+                    "CBS": {
+                        "total": 1,
+                        "success": 0
+                    },
                     "CFR": {
-                        "total": 37,
-                        "success": 7
+                        "total": 36,
+                        "success": 8
                     },
                     "CGHR": {
                         "total": 2,
@@ -1258,11 +1262,11 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 7,
-                "success": 1,
+                "success": 2,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 1,
-                        "success": 0
+                        "success": 1
                     },
                     "CFR": {
                         "total": 3,
@@ -1416,7 +1420,7 @@ const DASHBOARD_DATA = {
         "6": {
             "Q1": {
                 "total": 6,
-                "success": 2,
+                "success": 1,
                 "bu_breakdown": {
                     "CFR": {
                         "total": 2,
@@ -1428,7 +1432,7 @@ const DASHBOARD_DATA = {
                     },
                     "CU": {
                         "total": 1,
-                        "success": 1
+                        "success": 0
                     },
                     "RIS": {
                         "total": 1,
@@ -1727,5 +1731,5 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-14 15:30:06';
+const LAST_UPDATED = '2026-10-15 09:57:13';
 const ACTIVE_QUARTER = 'Q4';
