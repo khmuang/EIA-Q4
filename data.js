@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-16 11:59:58
+// Automatically generated for EIA Q4 at 2026-10-16 14:03:29
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1731,5 +1731,16 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-16 11:59:58';
+const LAST_UPDATED = '2026-10-16 14:03:29';
 const ACTIVE_QUARTER = 'Q4';
+const TOPIC_LINKS = {
+    "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
+    "1.2": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQD6NIfJ4xaVRpl79TB-Nc9MAejpyXydOSt0Hhve3qwbx6o?e=y1mfBL",
+    "2": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBWbBXKuUMGR7AfXdYVfGb3AQgJUnUl0lVtgtaQLoPCSc4?e=wC7L6o",
+    "3": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDbxDhjdzU2Rrg1fI4Cie4RAY5fRV8wJFHYTBw22mVJoZ4?e=LfNFJk",
+    "4": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDE8edCKKYISZIFk8rsMD-cAbMOzTnpy1ypZNhZo9-gvyg?e=sIJHGt",
+    "5": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBJqEIFavrPQJXUb57-Yp2gAa2nUuZlzg4_hm2oq7fwNdw?e=btAXKe",
+    "6": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBkjEYXPSfUQJjiFfnlQpqxAUVIoJyFJITxNciWvCb5QKk?e=OpRI8X",
+    "7": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQAy9Uw0MgbbSpcX7pclwI_BAY38EZtbPjCtjyfdhGltkWo?e=giFQj9",
+    "8": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDdbBhpcOwiTK6ca1XWGk44AaviR6Zt3DQkQcyHqjqwTRI?e=sdkDYB"
+};

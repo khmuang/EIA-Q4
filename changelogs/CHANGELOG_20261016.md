@@ -33,16 +33,25 @@
 - รัน `gen_tables.py` ฉีดตารางสถิติใหม่เข้าสู่ `index.html` เรียบร้อย
 - อัปเดต [.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/.gitignore) ให้ละเว้นโฟลเดอร์สำรองข้อมูล (`backup*/`) เพื่อความปลอดภัย
 
+#### 6. เชื่อมต่อลิงก์ SharePoint ของแต่ละไฟล์ Excel เข้าสู่หน้าแดชบอร์ด
+- ปรับปรุง [update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py):
+  - เพิ่มฟังก์ชัน `load_topic_links()` ดึง URL ลิงก์ SharePoint ทั้ง 9 หัวข้อจากไฟล์ `Q4Link.xlsx` ใน OneDrive Q4 อัตโนมัติ
+  - ส่งออกตัวแปร `const TOPIC_LINKS` เข้าสู่ [data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js) ทุกครั้งที่รัน Sync
+- ปรับปรุง [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html):
+  - เพิ่มการเชื่อมต่อ `a href` เปิดลิงก์ SharePoint ในแท็บใหม่ (`target="_blank"`) ที่ชื่อหัวข้อในการ์ด **Topic Execution** และ **Execution Breakdown Table**
+  - เพิ่มไอคอน `↗` สวยงาม และเอฟเฟกต์ Hover เปลี่ยนสีฟ้าเรืองแสงตามธีม Dark Luxury
+
 ---
 
 ### 📂 รายการไฟล์ที่เกี่ยวข้อง (Files Touched)
 
 | สถานะ | ที่อยู่ไฟล์ | คำอธิบาย |
 | :--- | :--- | :--- |
-| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | ปรับ topicsConfig เป็น Require Restart และฉีดตารางสถิติใหม่ |
+| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | เพิ่มการคลิกเปิด SharePoint ใน Topic Execution & Breakdown Table พร้อม CSS |
+| **Updated** | [EIA_Q4/update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py) | เพิ่มฟังก์ชัน load_topic_links() อ่านค่าจาก Q4Link.xlsx สู่ data.js |
+| **Updated** | [EIA_Q4/data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js) | บันทึกตัวแปร TOPIC_LINKS ครบทั้ง 9 หัวข้อ |
 | **Updated** | [EIA_Q4/gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) | ปรับ topic_names เป็น Require Restart |
-| **Updated** | [EIA_Q4/update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py) | อัปเดตคอนฟิกจับคู่ไฟล์ 3. Require Restart.xlsx และตาราง Terminal |
 | **Updated** | [EIA_Q4/README.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/README.md) | อัปเดตรายละเอียดหัวข้อ 3.1 ในตาราง Baseline Scope |
-| **Updated** | [EIA_Q4/data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js) | อัปเดตข้อมูลตัวเลขล่าสุดจาก OneDrive Q4 |
 | **Updated** | [EIA_Q4/.gitignore](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/.gitignore) | เพิ่มการละเว้นโฟลเดอร์ backup*/ |
-| **Created** | [EIA_Q4/changelogs/CHANGELOG_20261016.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261016.md) | บันทึกประวัติการปรับปรุงระบบประจำวันที่ 16 ต.ค. 2026 |
+| **Updated** | [EIA_Q4/changelogs/CHANGELOG_20261016.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261016.md) | บันทึกประวัติการปรับปรุงระบบประจำวันที่ 16 ต.ค. 2026 (Sub-project) |
+

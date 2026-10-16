@@ -15,6 +15,7 @@ if sys.platform == 'win32':
 # --- CONFIGURATION (OneDrive Integration for Q4) ---
 ONEDRIVE_Q4_ROOT = r"D:\Users\Djmanny\OneDrive - Central Group\RIS Endpoint support - 2026\Q4"
 Q4_SCOPE_DOC = os.path.join(ONEDRIVE_Q4_ROOT, "EIA Document Q4.xlsx")
+Q4_LINKS_DOC = os.path.join(ONEDRIVE_Q4_ROOT, "Q4Link.xlsx")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_FILE = os.path.join(BASE_DIR, 'data.js')
@@ -107,6 +108,26 @@ def print_sync_summary(multi_matrix):
     print(f" {t_id} | {t_name} | {t_count} ")
     print("=" * total_w)
     print(" [INFO] All 9 Topics evaluated successfully! Ready to push to GitHub.\n")
+
+
+def load_topic_links():
+    """Load SharePoint document links from Q4Link.xlsx if available."""
+    links = {}
+    if os.path.exists(Q4_LINKS_DOC):
+        try:
+            import pandas as pd
+            df = pd.read_excel(Q4_LINKS_DOC)
+            df.columns = [str(c).strip() for c in df.columns]
+            for _, row in df.iterrows():
+                no_val = str(row.get('No.') or '').strip()
+                link_val = str(row.get('Link document') or '').strip()
+                if no_val and link_val and link_val.startswith('http'):
+                    tid = no_val.split(' ')[0].rstrip('.')
+                    links[tid] = link_val
+            print(f"[INFO] Loaded {len(links)} SharePoint document links from {Q4_LINKS_DOC}")
+        except Exception as e:
+            print(f"[WARNING] Could not load {Q4_LINKS_DOC}: {e}")
+    return links
 
 
 def load_baseline_from_q4_document():
@@ -275,9 +296,12 @@ def sync():
         sys.exit(1)
 
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    topic_links = load_topic_links()
     js_content = f"// Automatically generated for EIA Q4 at {now}\nconst DASHBOARD_DATA = {json.dumps(multi_matrix, indent=4)};\n"
     js_content += f"const LAST_UPDATED = '{now}';\n"
     js_content += f"const ACTIVE_QUARTER = 'Q4';\n"
+    if topic_links:
+        js_content += f"const TOPIC_LINKS = {json.dumps(topic_links, indent=4)};\n"
 
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(js_content)

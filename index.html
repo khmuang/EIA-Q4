@@ -107,6 +107,29 @@
         .topic-info h4 { font-size: 0.85rem; font-weight: 700; }
         .topic-info p { font-size: 0.7rem; color: var(--text-dim); }
         .topic-pct { font-size: 1rem; font-weight: 900; }
+        .topic-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .topic-title-link:hover h4,
+        .topic-title-link:hover {
+            color: var(--accent-blue) !important;
+        }
+        .sharepoint-icon {
+            font-size: 0.75rem;
+            opacity: 0.45;
+            margin-left: 5px;
+            color: var(--accent-blue);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        .topic-title-link:hover .sharepoint-icon {
+            opacity: 1;
+            transform: translate(2px, -2px);
+        }
 
         /* Detailed Table */
         .analysis-table-container {
@@ -1419,6 +1442,19 @@
         };
         const topicOrder = ["1.1", "1.2", "2", "3", "4", "5", "6", "7", "8"];
 
+        const fallbackTopicLinks = {
+            "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
+            "1.2": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQD6NIfJ4xaVRpl79TB-Nc9MAejpyXydOSt0Hhve3qwbx6o?e=y1mfBL",
+            "2": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBWbBXKuUMGR7AfXdYVfGb3AQgJUnUl0lVtgtaQLoPCSc4?e=wC7L6o",
+            "3": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDbxDhjdzU2Rrg1fI4Cie4RAY5fRV8wJFHYTBw22mVJoZ4?e=LfNFJk",
+            "4": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDE8edCKKYISZIFk8rsMD-cAbMOzTnpy1ypZNhZo9-gvyg?e=sIJHGt",
+            "5": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBJqEIFavrPQJXUb57-Yp2gAa2nUuZlzg4_hm2oq7fwNdw?e=btAXKe",
+            "6": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQBkjEYXPSfUQJjiFfnlQpqxAUVIoJyFJITxNciWvCb5QKk?e=OpRI8X",
+            "7": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQAy9Uw0MgbbSpcX7pclwI_BAY38EZtbPjCtjyfdhGltkWo?e=giFQj9",
+            "8": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQDdbBhpcOwiTK6ca1XWGk44AaviR6Zt3DQkQcyHqjqwTRI?e=sdkDYB"
+        };
+        const topicLinks = (typeof TOPIC_LINKS !== 'undefined') ? TOPIC_LINKS : fallbackTopicLinks;
+
         let currentTeam = 'OVERALL';
         let currentPhase = 'ALL';
         let currentChart = null;
@@ -1547,11 +1583,16 @@
                     trendHtml = `<span class="trend-badge trend-stable">● 0%</span>`;
                 }
 
+                const link = topicLinks[tid];
+                const titleHtml = link ? 
+                    `<a href="${link}" target="_blank" rel="noopener noreferrer" class="topic-title-link" title="คลิกเพื่อเปิดไฟล์บน SharePoint"><h4>${tid} ${topicsConfig[tid]} <span class="sharepoint-icon">↗</span></h4></a>` :
+                    `<h4>${tid} ${topicsConfig[tid]}</h4>`;
+
                 const div = document.createElement('div');
                 div.className = 'topic-item';
                 div.innerHTML = `
                     <div class="topic-info">
-                        <h4>${tid} ${topicsConfig[tid]}</h4>
+                        ${titleHtml}
                         <p>${item.success}/${item.total} Units</p>
                     </div>
                     <div class="topic-pct" style="color: ${item.compliance >= 85 ? 'var(--accent-emerald)' : 'var(--accent-rose)'}">${item.compliance}%</div>
@@ -1636,9 +1677,14 @@
                 else if (item.compliance >= 65) rateColor = 'var(--accent-blue)';
                 else if (item.compliance >= 45) rateColor = 'var(--accent-amber)';
 
+                const link = topicLinks[tid];
+                const tableTitleHtml = link ?
+                    `<a href="${link}" target="_blank" rel="noopener noreferrer" class="topic-title-link" title="คลิกเพื่อเปิดไฟล์บน SharePoint">${tid} ${topicsConfig[tid]} <span class="sharepoint-icon">↗</span></a>` :
+                    `${tid} ${topicsConfig[tid]}`;
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td style="font-weight: 700; color: var(--text-dim);">${tid} ${topicsConfig[tid]}</td>
+                    <td style="font-weight: 700; color: var(--text-dim);">${tableTitleHtml}</td>
                     <td style="color: var(--accent-emerald); font-weight: 700;">${item.success.toLocaleString()}</td>
                     <td style="color: var(--accent-rose);">${pending.toLocaleString()}</td>
                     <td><span style="font-weight: 900; color: ${rateColor};">${item.compliance}%</span></td>
