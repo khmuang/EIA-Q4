@@ -1,10 +1,9 @@
-# 📜 EIA Q4 Changelog — 16 ตุลาคม 2026 (Rename Topic 3 to Require Restart)
+# 📜 EIA Q4 Changelog — 16 ตุลาคม 2026 (Rename Topic 3 to Require Restart & SharePoint Integration)
 
 ## 📌 สรุปภาพรวมการทำงานประจำวัน (Daily Summary)
-ในวันนี้ได้ดำเนินการตามกระบวนการ `/approval_guard` โดยได้รับคำสั่งอนุมัติจากผู้ใช้ให้ดำเนินการ **เปลี่ยนชื่อหัวข้อที่ 3 จากเดิม "Patch Update" เป็น "Require Restart"**
-เพื่อให้สอดคล้องกับโครงสร้างข้อมูลใน OneDrive Q4 ซึ่งได้ปรับเปลี่ยนชื่อโฟลเดอร์เป็น `3. Require Restart` และไฟล์ข้อมูล `3. Require Restart.xlsx` (คอลัมน์สถานะ `Restart update Y/N`)
-
-การเปลี่ยนแปลงนี้ได้รับการปรับปรุงครบวงจรทั้งในส่วน Frontend Web Dashboard, Static Table Generator, Data Sync Engine และเอกสารโครงการ README
+ในวันนี้ได้ดำเนินการตามกระบวนการ `/approval_guard` โดยได้รับคำสั่งอนุมัติจากผู้ใช้ให้ดำเนินการ 2 ภารกิจหลัก:
+1. **เปลี่ยนชื่อหัวข้อที่ 3 จากเดิม "Patch Update" เป็น "Require Restart":** เพื่อให้สอดคล้องกับโครงสร้างข้อมูลใน OneDrive Q4 ซึ่งได้ปรับเปลี่ยนชื่อโฟลเดอร์เป็น `3. Require Restart` และไฟล์ข้อมูล `3. Require Restart.xlsx` (คอลัมน์สถานะ `Restart update Y/N`)
+2. **เชื่อมต่อลิงก์ SharePoint ของแต่ละไฟล์ Excel เข้าสู่หน้าแดชบอร์ด:** ดึง URL ทั้ง 9 หัวข้อจากไฟล์ `Q4Link.xlsx` อัตโนมัติ และทำให้ชื่อหัวข้อในการ์ด **Topic Execution** และ **Execution Breakdown Table** สามารถคลิกเปิดไฟล์ Excel ต้นทางบน SharePoint ได้ทันทีในแท็บใหม่ (`target="_blank"`)
 
 ---
 
