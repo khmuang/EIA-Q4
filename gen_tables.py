@@ -26,7 +26,7 @@ data = json.loads(json_str)
 topic_order = ['1.1', '1.2', '2', '3', '4', '5', '6', '7', '8']
 topic_names = {
     '1.1': '1.1 IT Asset', '1.2': '1.2 GLPI agent', '2': '2 Update OS',
-    '3': '3 Patch Update', '4': '4 Antivirus', '5': '5 Firewall',
+    '3': '3 Require Restart', '4': '4 Antivirus', '5': '5 Firewall',
     '6': '6 Client join domain', '7': '7 Privileged User', '8': '8 Document Request'
 }
 

@@ -16,7 +16,7 @@
 | **1.1** | Missing BU, Company, Location information | **152** | Low | กรอกข้อมูลในระบบ GLPI ให้สมบูรณ์ |
 | **1.2** | Not installed GLPI Agent | **50** | Low | ติดตั้ง GLPI Agent x64/x86 |
 | **2.1** | W11 OS version not current *(Heavy-Hitter)* | **3,152** | Medium | อัปเดต OS เป็นเวอร์ชันปัจจุบัน |
-| **3.1** | Device require patch security updates | **327** | Medium | อัปเดต Patch ความปลอดภัย |
+| **3.1** | Require Restart (Pending Restart) | **327** | Medium | รีสตาร์ทเครื่องเพื่อให้การอัปเดตสมบูรณ์ |
 | **4.1** | Antivirus software not installed / not standard | **95** | High | ติดตั้ง Antivirus ตามมาตรฐาน |
 | **5.1** | Built-in firewall not enabled / misconfigured | **567** | Medium | เปิดใช้งานและตั้งค่า Firewall |
 | **6.1** | Device not joined to domain | **23** | High | นำเครื่อง Join เข้า Domain |
