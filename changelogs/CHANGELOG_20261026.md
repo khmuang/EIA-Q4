@@ -32,7 +32,16 @@
 
 #### 3. ปรับปรุง Data Pipeline และ Dashboard Tables
 - [update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py) & [data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js): Unify ชื่อสังกัด 'RIS No Service'
-- [gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) & [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html): ฉีดตาราง BU Matrix ครบ 5,092 เครื่อง พร้อม Grand Total รายทีม
+#### 4. เพิ่มคอลัมน์แจกแจงราย Phase (Q1, Q2, Q3, Q4) ในตารางเจาะลึกรายทีม (Team Deep Dive)
+- ปรับปรุง [gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) ให้คำนวณสถิติและแสดงผลข้อมูลจำแนกตามแต่ละ Phase:
+  - **Phase Q1:** ผลงานและเป้าหมายในงวด Q1
+  - **Phase Q2:** ผลงานและเป้าหมายในงวด Q2
+  - **Phase Q3:** ผลงานและเป้าหมายในงวด Q3
+  - **Phase Q4 (งวดปัจจุบัน):** เป้าหมายและผลงานเฉพาะงวด Q4 (เน้นพื้นหลังสีฟ้า)
+  - **Overall Q4 Scope (สะสมรวม):** ภาพรวมสะสมทุก Phase ในขอบเขต Q4
+- เพิ่มแถวสรุปครบถ้วนทั้ง **Grand Total (ผลรวมทีม)**, **Total Y (สำเร็จ)** และ **Total N (รอดำเนินการ)** ในทุกคอลัมน์ของแต่ละ Phase
+- อัปเดตการ์ดสรุปย่อด้านบนของแต่ละทีมด้วย Stat Badges แสดงความคืบหน้าของทุก Phase ชัดเจน
+- ฉีดตารางลงใน [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) ครบถ้วนทั้ง 3 ทีมหลัก (DC, HO, Branch)
 
 ---
 
@@ -40,6 +49,8 @@
 
 | สถานะ | ที่อยู่ไฟล์ | คำอธิบาย |
 | :--- | :--- | :--- |
+| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | อัปเดตตาราง Team Performance & Deep Dive ให้มีคอลัมน์ Phase Q1, Q2, Q3, Q4 และ Overall Scope |
+| **Updated** | [EIA_Q4/gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) | เพิ่มตรรกะคำนวณและสร้างตาราง 6 คอลัมน์แจกแจงราย Phase รายหัวข้อ และสรุป Grand Total/Y/N |
 | **Updated** | [EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx) | รีเจนสไลด์ PowerPoint 8 สไลด์ด้วยชุดตัวเลข BU และ Scope ใหม่ |
 | **Updated** | [EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md) | อัปเดตสเปกและบทพูดสไลด์ให้ตรงกับตัวเลขจริง 5,092 เครื่อง |
 | **Updated** | [scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md](file:///d:/Users/Djmanny/.gemini/tmp/project/scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md) | อัปเดตรายงานสรุปผล Q4 ฉบับสมบูรณ์ด้วยสถิติ BU ชุดใหม่ |
@@ -50,7 +61,13 @@
 
 ### 🔍 ผลการตรวจสอบความถูกต้อง (Verification Proof)
 1. **Scope Coverage:** ครอบคลุม 5,092 เครื่อง (DC: 533, HO: 609, Branch: 3,855, Unassigned: 95)
-2. **Success Count:** ยอดรวมสำเร็จ 361 เครื่อง (DC: 194, HO: 149, Branch: 18, Unassigned: 0)
-3. **Pending Count:** ยอดคงเหลือรอดำเนินการ 4,731 เครื่อง (92.91%)
-4. **Top BUs:** CDG 1,758 เครื่อง, CFR 987 เครื่อง, CMG 518 เครื่อง, PWB 453 เครื่อง
-5. **ความสอดคล้อง:** ตัวเลขในรายงาน, สไลด์ PowerPoint, หน้าเว็บแดชบอร์ด และเอกสารสเปก ตรงกัน 100%
+2. **Phase Breakdown Verification:**
+   - **DC (533 เครื่อง):** Q1: 92/346 (27%), Q2: 8/14 (57%), Q3: 2/13 (15%), Q4: 92/160 (57%) -> รวม 194/533 (36%)
+   - **HO (609 เครื่อง):** Q1: 53/290 (18%), Q2: 7/19 (37%), Q3: 5/15 (33%), Q4: 84/285 (29%) -> รวม 149/609 (24%)
+   - **Branch (3,855 เครื่อง):** Q1: 4/2,964 (0%), Q2: 0/315 (0%), Q3: 0/53 (0%), Q4: 14/523 (3%) -> รวม 18/3,855 (0%)
+   - ผลรวมของแต่ละ Phase (Q1+Q2+Q3+Q4) เท่ากับ Overall Scope สะสม 100% ทั้งในระดับหัวข้อและ Grand Total
+3. **Success Count:** ยอดรวมสำเร็จ 361 เครื่อง (DC: 194, HO: 149, Branch: 18, Unassigned: 0)
+4. **Pending Count:** ยอดคงเหลือรอดำเนินการ 4,731 เครื่อง (92.91%)
+5. **Top BUs:** CDG 1,758 เครื่อง, CFR 987 เครื่อง, CMG 518 เครื่อง, PWB 453 เครื่อง
+6. **ความสอดคล้อง:** ตัวเลขในรายงาน, สไลด์ PowerPoint, หน้าเว็บแดชบอร์ด และเอกสารสเปก ตรงกัน 100%
+

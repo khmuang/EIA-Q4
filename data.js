@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-26 12:01:49
+// Automatically generated for EIA Q4 at 2026-10-26 15:30:03
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1713,7 +1713,7 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-26 12:01:49';
+const LAST_UPDATED = '2026-10-26 15:30:03';
 const ACTIVE_QUARTER = 'Q4';
 const TOPIC_LINKS = {
     "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
