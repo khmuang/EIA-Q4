@@ -1,4 +1,4 @@
-# 🎙️ คู่มือและบทพูดนำเสนอผู้บริหาร EIA Q4 Performance Slide Deck
+# 🎙️ คู่มือและบทพูดนำเสนอผู้บริหาร EIA Q4 Performance Slide Deck (9 Slides)
 
 **โครงการ:** RIS Endpoint Support — Endpoint Internal Audit (EIA) ประจำไตรมาส 4/2026  
 **ไฟล์สไลด์ PowerPoint:** [`EIA_Q4_Executive_Performance_Presentation.pptx`](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx)  
@@ -7,24 +7,26 @@
 
 ---
 
-## 🧭 ภาพรวมโครงสร้างชุดสไลด์นำเสนอ (8-Slide Executive Structure)
+## 🧭 ภาพรวมโครงสร้างชุดสไลด์นำเสนอ (9-Slide Executive Structure)
 
 ```
 [Slide 1] Executive Cover (ชื่อโครงการ, หน่วยงาน, วันที่, กรอบเวลา 30 วันสู่ Deadline)
    │
 [Slide 2] Executive Summary & Hero KPIs (ตัวเลขหลัก 4 ตัว: 5,092 / 361 / 4,731 / 30 วัน)
    │
-[Slide 3] Heavy-Hitters Deep Dive: The 93.4% Factor (เจาะลึก 4 หมวดหลัก โดยเฉพาะ OS Update)
+[Slide 3] Data Integrity & 3-Way Reconciliation Audit (การตรวจสอบยัน 3 แหล่งข้อมูล: Excel = Dashboard = BU Matrix 100%)
    │
-[Slide 4] 9-Topic Compliance Matrix (ตารางผลประเมินครบ 9 หัวข้อตามเกณฑ์ EIA 4 ระดับ)
+[Slide 4] Heavy-Hitters Deep Dive: The 93.4% Factor (เจาะลึก 4 หมวดหลัก โดยเฉพาะ OS Update 3,152 เครื่อง)
    │
-[Slide 5] Team Performance & Podium Ranking (DC นำอันดับ 1, HO ที่ 2, Branch แบกรับ 75.7%)
+[Slide 5] 9-Topic Compliance Matrix (ตารางผลประเมินครบ 9 หัวข้อตามเกณฑ์ EIA 4 ระดับ)
    │
-[Slide 6] Business Unit (BU) Distribution & Impact (CDG, CFR, CMG, PWB และการกระจายตัว 5,092 เครื่อง)
+[Slide 6] Team Performance & Podium Ranking (DC นำอันดับ 1, HO ที่ 2, Branch แบกรับ 75.7%)
    │
-[Slide 7] Root Causes & Structural Invariants (ข้อจำกัดสถาปัตยกรรม POS/SCO, Win7, Network)
+[Slide 7] Business Unit (BU) Distribution & Impact (CDG, CFR, CMG, PWB และการกระจายตัว 5,092 เครื่อง)
    │
-[Slide 8] Roadmap & Executive Decision Support (แผน 3 Sprint และ 3 การตัดสินใจที่ขอรับการอนุมัติ)
+[Slide 8] Root Causes & Structural Invariants (ข้อจำกัดสถาปัตยกรรม POS/SCO, Win7, Network)
+   │
+[Slide 9] Roadmap & Executive Decision Support (แผน 3 Sprint และ 3 การตัดสินใจที่ขอรับการอนุมัติ)
 ```
 
 ---
@@ -56,7 +58,20 @@
 
 ---
 
-### 🖥️ Slide 3: เจาะลึกกลุ่มงานปริมาณสูง (Heavy-Hitters Deep Dive)
+### 🖥️ Slide 3: การตรวจสอบความถูกต้องของข้อมูล 3 ฝ่าย (Data Integrity & 3-Way Reconciliation Audit)
+* **Action Title:** *"การตรวจสอบความถูกต้องของข้อมูล 3 ฝ่าย ยืนยันความสอดคล้องตรงกัน 100%"*
+* **3 การ์ดสรุป:**
+  1. **5,092 เครื่อง** — Full Baseline Scope (Excel = Dashboard = BU Matrix)
+  2. **361 เครื่อง (7.09%)** — Remediated Units (ยอดผ่านเกณฑ์ตรงกัน 100%)
+  3. **0 Variance** — Audit Discrepancy (ตรวจสอบรายเซลล์ถูกต้องสมบูรณ์)
+* **ตาราง Reconciliation:**
+  - ยืนยันผลตรวจสอบระหว่างไฟล์ Excel ดิบใน OneDrive Q4 กับ แดชบอร์ดส่วนบน และ ตาราง BU Matrix ด้านล่าง พบความถูกต้องตรงกัน 100% ทั้งในมิติ Scope, ผ่านเกณฑ์, 9 หัวข้อ, และรายทีม
+* **🎙️ บทพูดสำหรับผู้นำเสนอ (Talking Points):**
+  > *"ก่อนจะเข้าสู่เนื้อหารายหัวข้อ ทางทีมงานได้ทำการตรวจสอบ Data Integrity แบบ 3 ฝ่าย หรือ 3-Way Reconciliation ระหว่างไฟล์ Excel ดิบทั้ง 9 ไฟล์ใน OneDrive, แดชบอร์ดส่วนบน และตาราง BU Matrix พบว่าข้อมูลทุกระดับตรงกัน 100% สมบูรณ์ โดยไม่มีผลต่างหรือ Discrepancy ใดๆ ทำให้ผู้บริหารมั่นใจได้ว่าตัวเลขที่นำเสนอในวันนี้มีความโปร่งใส ถูกต้อง และตรวจสอบย้อนกลับได้ถึงระดับเครื่องจริงครับ"*
+
+---
+
+### 🖥️ Slide 4: เจาะลึกกลุ่มงานปริมาณสูง (Heavy-Hitters Deep Dive)
 * **Action Title:** *"ภาระงานกว่า 93.4% กระจุกตัวอยู่ใน 4 หมวดหลัก โดย Windows 11 OS Update เป็นตัวแปรชี้ขาด"*
 * **4 การ์ดหมวดงานหลัก (The 93.4% Factor):**
   1. **Topic 2: Windows 11 OS Update** — **3,152 เครื่อง (61.9%)** | ผ่าน 103 เครื่อง (3.3%) | คงเหลือ 3,049 เครื่อง
@@ -68,7 +83,7 @@
 
 ---
 
-### 🖥️ Slide 4: ตารางผลประเมินรายหัวข้อครบทั้ง 9 หัวข้อ (9-Topic Compliance Matrix)
+### 🖥️ Slide 5: ตารางผลประเมินรายหัวข้อครบทั้ง 9 หัวข้อ (9-Topic Compliance Matrix)
 * **Action Title:** *"ตารางสรุปผลการประเมิน 9 หมวดหมู่งานตามเกณฑ์มาตรฐาน EIA Dashboard"*
 * **ตารางแจกแจง:** Topic 1.1 ถึง Topic 8 (Total, Passed, Pending, Compliance %, Status Tier, Result)
 * **จุดสังเกต:**
@@ -81,7 +96,7 @@
 
 ---
 
-### 🖥️ Slide 5: ผลการดำเนินงานรายทีม (Team Performance & Podium Ranking)
+### 🖥️ Slide 6: ผลการดำเนินงานรายทีม (Team Performance & Podium Ranking)
 * **Action Title:** *"ทีม DC นำอันดับ 1 ด้วยความสำเร็จ 36.4% ขณะที่ทีม Branch แบกรับ 75.7% ของอุปกรณ์ทั่วประเทศ"*
 * **Podium 3 อันดับ:**
   - 🥇 **ทีม DC (ศูนย์กระจายสินค้า):** ผ่าน 194 / 533 เครื่อง (**36.40%**) — ปลดสิทธิ์ Admin และจัดการทรัพย์สินรวดเร็ว
@@ -92,7 +107,7 @@
 
 ---
 
-### 🖥️ Slide 6: การกระจายตัวตามกลุ่มธุรกิจ (Business Unit Distribution)
+### 🖥️ Slide 7: การกระจายตัวตามกลุ่มธุรกิจ (Business Unit Distribution)
 * **Action Title:** *"CDG และ CFR ถือครองอุปกรณ์กว่า 53.9% โดย CMG มีความก้าวหน้าสูงสุดที่ 16.8%"*
 * **สถิติราย BU (ครอบคลุม 5,092 เครื่อง):**
   - **CDG (Central Department Store):** 1,758 เครื่อง (ผ่าน 99 เครื่อง | 5.63%)
@@ -107,7 +122,7 @@
 
 ---
 
-### 🖥️ Slide 7: ข้อจำกัดเชิงสถาปัตยกรรมและสาเหตุรากเหง้า (Root Causes & Structural Invariants)
+### 🖥️ Slide 8: ข้อจำกัดเชิงสถาปัตยกรรมและสาเหตุรากเหง้า (Root Causes & Structural Invariants)
 * **Action Title:** *"ข้อจำกัดทางสถาปัตยกรรม 4 ด้านที่ส่งผลต่อความเร็วในการปิดงานของระบบหน้าร้าน"*
 * **4 เสาหลักของสาเหตุ:**
   1. **สถาปัตยกรรมเครื่อง POS:** แยก VLAN หน้าร้าน ไม่สามารถ Join Domain และโปรแกรม TP.Net/BS Change ต้องเขียน Registry ด้วยสิทธิ์ Admin
@@ -119,7 +134,7 @@
 
 ---
 
-### 🖥️ Slide 8: แผนเร่งรัดและข้อเสนอแนะต่อผู้บริหาร (Roadmap & Executive Decision Support)
+### 🖥️ Slide 9: แผนเร่งรัดและข้อเสนอแนะต่อผู้บริหาร (Roadmap & Executive Decision Support)
 * **Action Title:** *"แผนปฏิบัติการ 3 สัปดาห์เร่งรัดปิดจุดเสี่ยงสู่เป้าหมายก่อนครบกำหนด 25 พ.ย."*
 * **3 Sprint สู่เป้าหมาย:**
   - **Sprint 1 (27 ต.ค. - 5 พ.ย.):** รัน Pop-up Prompt บังคับ Reboot ฝั่ง HO + ตั้ง Auto-update นอกเวลาสาขา (เป้าหมาย OS Update > 50%)
