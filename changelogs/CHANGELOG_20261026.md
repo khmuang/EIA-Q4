@@ -48,18 +48,23 @@
 - กำหนดสัดส่วนคอลัมน์อย่างสมดุล: **Topic (28%)**, **Phase Q1 (14%)**, **Phase Q2 (14%)**, **Phase Q3 (14%)**, **Phase Q4 (15%)**, และ **Overall Scope (15%)**
 - ขจัดปัญหาช่องว่างว่างเปล่าขนาดใหญ่ (Giant Void) ระหว่างคอลัมน์ Topic และ Phase Q1 ทำให้ตารางกระจายตัวเต็มพื้นที่การ์ดอย่างสมดุลและสวยงามบนทุกขนาดหน้าจอ
 
+#### 6. การเชื่อมโยงระบบอัปเดตอัตโนมัติ (Automated Pipeline & Fail-safe Chaining)
+- เพิ่มการเรียกทำงาน [gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) อัตโนมัติในตอนท้ายของ [update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py)
+- รับประกันว่าตารางข้อมูลเจาะลึกราย Phase และตาราง BU Matrix จะได้รับการคำนวณและอัปเดตลงหน้าเว็บแดชบอร์ด 100% ทุกครั้งที่มีการรันอัปเดต ไม่ว่าจะผ่าน Windows Task Scheduler (`Update EIA-Q3-1`), ดับเบิลคลิก [run_sync.bat](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/run_sync.bat) หรือรันคำสั่งเดี่ยว
+
 ---
 
 ### 📂 รายการไฟล์ที่เกี่ยวข้อง (Files Touched)
 
 | สถานะ | ที่อยู่ไฟล์ | คำอธิบาย |
 | :--- | :--- | :--- |
-| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | อัปเดตตาราง Team Performance & Deep Dive ให้มีคอลัมน์ Phase Q1, Q2, Q3, Q4 และ Overall Scope |
-| **Updated** | [EIA_Q4/gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) | เพิ่มตรรกะคำนวณและสร้างตาราง 6 คอลัมน์แจกแจงราย Phase รายหัวข้อ และสรุป Grand Total/Y/N |
-| **Updated** | [EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx) | รีเจนสไลด์ PowerPoint 8 สไลด์ด้วยชุดตัวเลข BU และ Scope ใหม่ |
-| **Updated** | [EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md) | อัปเดตสเปกและบทพูดสไลด์ให้ตรงกับตัวเลขจริง 5,092 เครื่อง |
-| **Updated** | [scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md](file:///d:/Users/Djmanny/.gemini/tmp/project/scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md) | อัปเดตรายงานสรุปผล Q4 ฉบับสมบูรณ์ด้วยสถิติ BU ชุดใหม่ |
-| **Updated** | [scratch/generate_q4_presentation.py](file:///d:/Users/Djmanny/.gemini/tmp/project/scratch/generate_q4_presentation.py) | ปรับปรุงสคริปต์สร้างสไลด์ให้ตรงกับข้อมูลล่าสุด |
+| **Updated** | [EIA_Q4/index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) | อัปเดตตาราง Team Performance & Deep Dive ให้มีคอลัมน์ Phase Q1, Q2, Q3, Q4 และจัดระยะห่างคอลัมน์อย่างสมดุล |
+| **Updated** | [EIA_Q4/gen_tables.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/gen_tables.py) | เพิ่มตรรกะคำนวณสถิติ 4 Phase, สรุป Grand Total/Y/N และจัดสัดส่วน CSS `table-layout: fixed;` |
+| **Updated** | [EIA_Q4/update_dashboard.py](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/update_dashboard.py) | เชื่อมคำสั่ง Auto-Call `gen_tables.py` ท้ายการซิงค์ข้อมูล OneDrive เพื่อการันตีการอัปเดตตารางหน้าเว็บ |
+| **Updated** | [EIA_Q4/data.js](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/data.js) | ซิงค์ฐานข้อมูลตัวเลขล่าสุด 5,092 เครื่อง ครอบคลุม 9 หมวดงานและ 4 Phase |
+| **Updated** | [EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_Executive_Performance_Presentation.pptx) | สไลด์ PowerPoint ผู้บริหารระดับสูง 9 สไลด์ (Widescreen 16:9) พร้อม 3-Way Reconciliation Audit |
+| **Updated** | [EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/EIA_Q4_SLIDE_DECK_SPEC.md) | คู่มือบทพูดนำเสนอและสเปกเนื้อหาสไลด์ทั้ง 9 สไลด์ |
+| **Updated** | [scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md](file:///d:/Users/Djmanny/.gemini/tmp/project/scratch/EIA_Q4_PERFORMANCE_SUMMARY_20261026.md) | เอกสารสรุปรายงานผลความคืบหน้า EIA Q4 ประจำวันที่ 26 ต.ค. 2026 |
 | **Updated** | [EIA_Q4/changelogs/CHANGELOG_20261026.md](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/changelogs/CHANGELOG_20261026.md) | บันทึกประวัติการปรับปรุงระบบประจำวันที่ 26 ต.ค. 2026 |
 
 ---
