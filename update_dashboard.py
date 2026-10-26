@@ -314,5 +314,16 @@ def sync():
     print(f"[OUTPUT] {OUTPUT_FILE}")
     print_sync_summary(multi_matrix)
 
+    # Auto-generate detailed static tables for index.html
+    gen_tables_script = os.path.join(BASE_DIR, 'gen_tables.py')
+    if os.path.exists(gen_tables_script):
+        print("\n[AUTO-SYNC] Automatically generating detailed static tables into index.html...")
+        try:
+            import subprocess
+            subprocess.run([sys.executable, gen_tables_script], check=True)
+        except Exception as e:
+            print(f"[WARNING] Failed to run gen_tables.py: {e}")
+
 if __name__ == "__main__":
     sync()
+
