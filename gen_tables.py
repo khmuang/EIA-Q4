@@ -107,6 +107,8 @@ html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
 .detailed-table th { background: rgba(255, 255, 255, 0.1); padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.75rem; }
 .detailed-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 .detailed-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+.phase-breakdown-table { table-layout: fixed; width: 100%; min-width: 880px; }
+.phase-breakdown-table th, .phase-breakdown-table td { padding: 9px 8px; vertical-align: middle; }
 .team-summary-box { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; flex-wrap: wrap; gap: 10px; }
 .team-stats { display: flex; gap: 8px; font-size: 0.8rem; flex-wrap: wrap; }
 .stat-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; }
@@ -162,17 +164,17 @@ for team in sorted_teams:
         </div>
         
         <div style="overflow-x: auto;">
-            <table class="detailed-table" style="min-width: 850px; text-align: center;">
+            <table class="detailed-table phase-breakdown-table" style="min-width: 880px; text-align: center;">
                 <thead>
                     <tr>
-                        <th style="min-width: 200px; text-align: left;">Topic</th>
-                        <th style="text-align: center; width: 105px;">Phase Q1</th>
-                        <th style="text-align: center; width: 105px;">Phase Q2</th>
-                        <th style="text-align: center; width: 105px;">Phase Q3</th>
-                        <th style="text-align: center; width: 135px; background: rgba(59, 130, 246, 0.15); border-left: 1px solid rgba(59, 130, 246, 0.3); border-right: 1px solid rgba(59, 130, 246, 0.3);">
+                        <th style="width: 28%; text-align: left; padding-left: 16px;">Topic</th>
+                        <th style="width: 14%; text-align: center;">Phase Q1</th>
+                        <th style="width: 14%; text-align: center;">Phase Q2</th>
+                        <th style="width: 14%; text-align: center;">Phase Q3</th>
+                        <th style="width: 15%; text-align: center; background: rgba(59, 130, 246, 0.15); border-left: 1px solid rgba(59, 130, 246, 0.3); border-right: 1px solid rgba(59, 130, 246, 0.3);">
                             Phase Q4 (งวดปัจจุบัน)
                         </th>
-                        <th style="text-align: center; width: 145px; background: rgba(255, 255, 255, 0.08);">
+                        <th style="width: 15%; text-align: center; background: rgba(255, 255, 255, 0.08);">
                             Overall Q4 Scope (สะสมรวม)
                         </th>
                     </tr>
@@ -189,7 +191,7 @@ for team in sorted_teams:
         if all_t > 0:
             color, shadow = get_chart_color(all_pct_row)
             topic_html = f"""<div style="margin-bottom: 4px; font-weight: bold; color: #fff;">{topic_names[tid]}</div>
-                            <div style="width: 100%; max-width: 180px; margin-top: 4px;">
+                            <div style="width: 100%; max-width: 220px; margin-top: 4px;">
                                 <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 2px;">
                                     <span style="color: {color}; font-weight: bold;">{all_pct_row}%</span>
                                     <span style="color: #9ca3af;">{all_s:,} / {all_t:,}</span>
@@ -201,7 +203,7 @@ for team in sorted_teams:
         else:
             topic_html = f"""<div style="font-weight: bold; color: #fff;">{topic_names[tid]}</div>"""
 
-        row_cells = f'<td style="text-align: left;">{topic_html}</td>'
+        row_cells = f'<td style="text-align: left; padding-left: 16px;">{topic_html}</td>'
         for ph in phase_order:
             p_m = phases.get(ph, {})
             pt = p_m.get('total', 0)
@@ -211,27 +213,27 @@ for team in sorted_teams:
                 pct = round((ps/pt)*100)
                 c, _ = get_chart_color(pct)
                 row_cells += f"""<td style="{hl}">
-                    <span style="color: {c}; font-weight: bold;">{pct}%</span><br>
-                    <span style="font-size: 0.7rem; color: #9ca3af;">{ps:,}/{pt:,}</span>
+                    <span style="color: {c}; font-weight: bold; font-size: 0.85rem;">{pct}%</span><br>
+                    <span style="font-size: 0.72rem; color: #9ca3af;">{ps:,}/{pt:,}</span>
                 </td>"""
             else:
-                row_cells += f"""<td style="{hl}"><span style="color: #4b5563;">-</span></td>"""
+                row_cells += f"""<td style="{hl}"><span style="color: #4b5563; font-size: 0.85rem;">-</span></td>"""
 
         # Overall column
         if all_t > 0:
             all_col, _ = get_chart_color(all_pct_row)
             row_cells += f"""<td style="background: rgba(255, 255, 255, 0.04);">
-            <span style="color: {all_col}; font-weight: bold; font-size: 0.85rem;">{all_pct_row}%</span><br>
-            <span style="font-size: 0.7rem; color: #9ca3af;">{all_s:,}/{all_t:,}</span>
+            <span style="color: {all_col}; font-weight: bold; font-size: 0.88rem;">{all_pct_row}%</span><br>
+            <span style="font-size: 0.72rem; color: #9ca3af;">{all_s:,}/{all_t:,}</span>
         </td>"""
         else:
-            row_cells += '<td style="background: rgba(255, 255, 255, 0.04);"><span style="color: #4b5563;">-</span></td>'
+            row_cells += '<td style="background: rgba(255, 255, 255, 0.04);"><span style="color: #4b5563; font-size: 0.85rem;">-</span></td>'
 
         html_tables += f"<tr>{row_cells}</tr>\n"
 
     gt_color, gt_shadow = get_chart_color(all_pct)
     gt_html = f"""<div style="font-weight: 800; font-size: 0.85rem; color: #fff;">Grand Total (ผลรวมทีม {team})</div>
-                    <div style="width: 100%; max-width: 180px; margin-top: 4px;">
+                    <div style="width: 100%; max-width: 220px; margin-top: 4px;">
                         <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 2px;">
                             <span style="color: {gt_color}; font-weight: bold;">{all_pct}%</span>
                             <span style="color: #9ca3af;">{team_all_s:,} / {team_all_t:,}</span>
@@ -244,7 +246,7 @@ for team in sorted_teams:
     # 1. Grand Total row
     html_tables += f"""
                 <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
-                    <td style="text-align: left;">{gt_html}</td>"""
+                    <td style="text-align: left; padding-left: 16px;">{gt_html}</td>"""
     for ph in phase_order:
         pt = team_phase_metrics[team][ph]['total']
         ps = team_phase_metrics[team][ph]['success']
@@ -253,38 +255,38 @@ for team in sorted_teams:
             ppct = round((ps/pt)*100)
             pc, _ = get_chart_color(ppct)
             html_tables += f"""<td style="{hl}">
-                <span style="color: {pc}; font-weight: bold;">{ppct}%</span><br>
-                <span style="font-size: 0.7rem; color: #cbd5e1;">{ps:,}/{pt:,}</span>
+                <span style="color: {pc}; font-weight: bold; font-size: 0.88rem;">{ppct}%</span><br>
+                <span style="font-size: 0.72rem; color: #cbd5e1;">{ps:,}/{pt:,}</span>
             </td>"""
         else:
-            html_tables += f"""<td style="{hl}"><span style="color: #4b5563;">-</span></td>"""
+            html_tables += f"""<td style="{hl}"><span style="color: #4b5563; font-size: 0.85rem;">-</span></td>"""
 
     html_tables += f"""<td style="background: rgba(255, 255, 255, 0.08);">
-                    <span style="color: {gt_color}; font-weight: bold; font-size: 0.9rem;">{all_pct}%</span><br>
-                    <span style="font-size: 0.7rem; color: #cbd5e1;">{team_all_s:,}/{team_all_t:,}</span>
+                    <span style="color: {gt_color}; font-weight: bold; font-size: 0.95rem;">{all_pct}%</span><br>
+                    <span style="font-size: 0.72rem; color: #cbd5e1;">{team_all_s:,}/{team_all_t:,}</span>
                 </td></tr>"""
 
     # 2. Total Y (สำเร็จ)
     html_tables += f"""
                 <tr style="background: rgba(16, 185, 129, 0.1);">
-                    <td style="text-align: left; font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">Total Y (สำเร็จ)</td>"""
+                    <td style="text-align: left; padding-left: 16px; font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">Total Y (สำเร็จ)</td>"""
     for ph in phase_order:
         ps = team_phase_metrics[team][ph]['success']
         hl = "background: rgba(59, 130, 246, 0.1); border-left: 1px solid rgba(59, 130, 246, 0.2); border-right: 1px solid rgba(59, 130, 246, 0.2);" if ph == 'Q4' else ""
-        html_tables += f"""<td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald); {hl}">{ps:,}</td>"""
-    html_tables += f"""<td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald); background: rgba(255, 255, 255, 0.05);">{team_all_s:,}</td></tr>"""
+        html_tables += f"""<td style="font-weight: 700; font-size: 0.85rem; color: var(--accent-emerald); {hl}">{ps:,}</td>"""
+    html_tables += f"""<td style="font-weight: 700; font-size: 0.85rem; color: var(--accent-emerald); background: rgba(255, 255, 255, 0.05);">{team_all_s:,}</td></tr>"""
 
     # 3. Total N (รอดำเนินการ)
     html_tables += f"""
                 <tr style="background: rgba(244, 63, 94, 0.1);">
-                    <td style="text-align: left; font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">Total N (รอดำเนินการ)</td>"""
+                    <td style="text-align: left; padding-left: 16px; font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">Total N (รอดำเนินการ)</td>"""
     for ph in phase_order:
         pt = team_phase_metrics[team][ph]['total']
         ps = team_phase_metrics[team][ph]['success']
         pn = pt - ps
         hl = "background: rgba(59, 130, 246, 0.1); border-left: 1px solid rgba(59, 130, 246, 0.2); border-right: 1px solid rgba(59, 130, 246, 0.2);" if ph == 'Q4' else ""
-        html_tables += f"""<td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose); {hl}">{pn:,}</td>"""
-    html_tables += f"""<td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose); background: rgba(255, 255, 255, 0.05);">{team_all_t - team_all_s:,}</td></tr>"""
+        html_tables += f"""<td style="font-weight: 700; font-size: 0.85rem; color: var(--accent-rose); {hl}">{pn:,}</td>"""
+    html_tables += f"""<td style="font-weight: 700; font-size: 0.85rem; color: var(--accent-rose); background: rgba(255, 255, 255, 0.05);">{team_all_t - team_all_s:,}</td></tr>"""
 
     html_tables += """
                 </tbody>

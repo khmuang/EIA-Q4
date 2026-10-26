@@ -43,6 +43,11 @@
 - อัปเดตการ์ดสรุปย่อด้านบนของแต่ละทีมด้วย Stat Badges แสดงความคืบหน้าของทุก Phase ชัดเจน
 - ฉีดตารางลงใน [index.html](file:///d:/Users/Djmanny/.gemini/tmp/project/EIA_Q4/index.html) ครบถ้วนทั้ง 3 ทีมหลัก (DC, HO, Branch)
 
+#### 5. ปรับปรุงการจัดวางและระยะห่างคอลัมน์ (Table Column Spacing Optimization)
+- ใช้ CSS `table-layout: fixed; width: 100%;` และคลาสเฉพาะ `.phase-breakdown-table`
+- กำหนดสัดส่วนคอลัมน์อย่างสมดุล: **Topic (28%)**, **Phase Q1 (14%)**, **Phase Q2 (14%)**, **Phase Q3 (14%)**, **Phase Q4 (15%)**, และ **Overall Scope (15%)**
+- ขจัดปัญหาช่องว่างว่างเปล่าขนาดใหญ่ (Giant Void) ระหว่างคอลัมน์ Topic และ Phase Q1 ทำให้ตารางกระจายตัวเต็มพื้นที่การ์ดอย่างสมดุลและสวยงามบนทุกขนาดหน้าจอ
+
 ---
 
 ### 📂 รายการไฟล์ที่เกี่ยวข้อง (Files Touched)
