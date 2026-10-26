@@ -257,7 +257,11 @@ def sync():
                     if found_bu: bu_col = found_bu[0]
 
                 if status_col and team_col:
-                    df['team_clean'] = df[team_col].fillna('Unknown').astype(str).str.strip()
+                    df['team_clean'] = df[team_col].fillna('Unknown').astype(str).str.strip().replace({
+                        'RIS No service': 'RIS No Service',
+                        'nan': 'Unknown',
+                        '': 'Unknown'
+                    })
                     df['y_n'] = df[status_col].fillna('N').apply(lambda x: 'Y' if str(x).strip().upper() == 'Y' else 'N')
                     if 'EIA Phase' in df.columns:
                         df['phase_clean'] = df['EIA Phase'].fillna('Q4').astype(str).str.strip().str.split(',').str[0]

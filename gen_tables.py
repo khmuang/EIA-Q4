@@ -54,6 +54,44 @@ def get_chart_color(pct):
     elif pct >= 45: return 'var(--accent-amber)', 'rgba(245,158,11,0.5)'
     return 'var(--accent-rose)', 'rgba(244,63,94,0.5)'
 
+# 1. Rank Primary Teams Dynamically
+primary_teams = ['DC', 'HO', 'Branch']
+team_metrics = {}
+for team in primary_teams:
+    all_t, all_s = 0, 0
+    q4_t, q4_s = 0, 0
+    for tid in topic_order:
+        phases = data.get(team, {}).get(tid, {})
+        for ph, m in phases.items():
+            all_t += m.get('total', 0)
+            all_s += m.get('success', 0)
+            if ph == 'Q4':
+                q4_t += m.get('total', 0)
+                q4_s += m.get('success', 0)
+    team_metrics[team] = {
+        'all_total': all_t, 'all_success': all_s,
+        'all_pct': round((all_s/all_t)*100) if all_t > 0 else 0,
+        'q4_total': q4_t, 'q4_success': q4_s,
+        'q4_pct': round((q4_s/q4_t)*100) if q4_t > 0 else 0
+    }
+
+sorted_teams = sorted(primary_teams, key=lambda t: team_metrics[t]['all_pct'], reverse=True)
+medals = {sorted_teams[0]: '🥇', sorted_teams[1]: '🥈', sorted_teams[2]: '🥉'}
+
+# Also calculate other teams (RIS No Service / Unknown)
+other_teams = [t for t in data.keys() if t not in primary_teams]
+other_all_t, other_all_s = 0, 0
+other_q4_t, other_q4_s = 0, 0
+for ot in other_teams:
+    for tid in topic_order:
+        phases = data.get(ot, {}).get(tid, {})
+        for ph, m in phases.items():
+            other_all_t += m.get('total', 0)
+            other_all_s += m.get('success', 0)
+            if ph == 'Q4':
+                other_q4_t += m.get('total', 0)
+                other_q4_s += m.get('success', 0)
+
 html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
 <style>
 .detailed-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; color: #fff; background: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
@@ -61,41 +99,41 @@ html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
 .detailed-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 .detailed-table tr:hover { background: rgba(255, 255, 255, 0.05); }
 .team-summary-box { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; flex-wrap: wrap; gap: 10px; }
-.team-stats { display: flex; gap: 10px; font-size: 0.85rem; }
+.team-stats { display: flex; gap: 10px; font-size: 0.85rem; flex-wrap: wrap; }
 .stat-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; }
 .team-desc { font-size: 0.85rem; color: var(--text-dim); width: 100%; margin-top: 5px; }
 </style>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h4 style="font-size: 1.2rem; margin: 0;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม Q4 (Team Performance & Deep Dive)</h4>
+        <div>
+            <h4 style="font-size: 1.2rem; margin: 0;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม Q4 (Team Performance & Deep Dive)</h4>
+            <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 5px;">แสดงการเปรียบเทียบระหว่างเป้าหมายเฉพาะงวด Q4 และสถานะผลงานสะสมในขอบเขต Q4 ทั้งหมด</div>
+        </div>
     </div>
 """
 
-for team in ['HO', 'DC', 'Branch']:
-    team_q4_t, team_q4_s = 0, 0
-    for tid in topic_order:
-        phases = data.get(team, {}).get(tid, {})
-        team_q4_t += phases.get('Q4', {}).get('total', 0)
-        team_q4_s += phases.get('Q4', {}).get('success', 0)
-
-    team_all_t = team_q4_t
-    team_all_s = team_q4_s
-    all_pct = round((team_all_s/team_all_t)*100) if team_all_t > 0 else 0
-    q4_pct = round((team_q4_s/team_q4_t)*100) if team_q4_t > 0 else 0
-
-    medal = '🥇' if team == 'HO' else ('🥈' if team == 'DC' else '🥉')
+for team in sorted_teams:
+    tm_stat = team_metrics[team]
+    team_all_t = tm_stat['all_total']
+    team_all_s = tm_stat['all_success']
+    all_pct = tm_stat['all_pct']
+    team_q4_t = tm_stat['q4_total']
+    team_q4_s = tm_stat['q4_success']
+    q4_pct = tm_stat['q4_pct']
+    medal = medals.get(team, '')
 
     html_tables += f"""
-    <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if team=='HO' else ''}">
+    <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if medal=='🥇' else ''}">
         <div class="rank-header">
             <span class="rank-name" style="font-size: 1.15rem;">{medal} ทีม {team}</span>
             <span class="rank-val" style="font-size: 1.1rem; color: {get_text_color(all_pct)};">
-                ภาพรวม Q4: {all_pct}% 
+                ภาพรวมขอบเขต Q4: {all_pct}% 
                 <span style="font-size: 0.85rem; color: #9ca3af; font-weight: normal; margin-left: 5px;">({team_all_s:,} / {team_all_t:,})</span>
             </span>
         </div>
         <div class="team-summary-box">
             <div class="team-stats">
-                <div class="stat-badge" style="background: {get_bg_color(q4_pct)}; color: {get_text_color(q4_pct)};">Q4 Target: {team_q4_t:,} Units ({q4_pct}%)</div>
+                <div class="stat-badge" style="background: {get_bg_color(all_pct)}; color: {get_text_color(all_pct)};">Overall Scope: {team_all_t:,} Units ({all_pct}%)</div>
+                <div class="stat-badge" style="background: {get_bg_color(q4_pct)}; color: {get_text_color(q4_pct)};">Phase Q4 Target: {team_q4_t:,} Units ({q4_pct}%)</div>
             </div>
         </div>
         
@@ -103,8 +141,8 @@ for team in ['HO', 'DC', 'Branch']:
             <thead>
                 <tr>
                     <th>Topic</th>
-                    <th>Phase Q4 Targets</th>
-                    <th>Overall Q4 Status</th>
+                    <th>Phase Q4 Targets (เฉพาะงวด Q4)</th>
+                    <th>Overall Q4 Status (สะสมรวมทุก Phase)</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,8 +155,8 @@ for team in ['HO', 'DC', 'Branch']:
         q4_pct_row = round((q4_s/q4_t)*100) if q4_t > 0 else 0
         q4_str = f'<span style="{get_status_class(q4_pct_row)}">{q4_s:,}/{q4_t:,} ({q4_pct_row}%)</span>' if q4_t > 0 else '-'
 
-        all_t = q4_t
-        all_s = q4_s
+        all_t = sum(m.get('total', 0) for m in phases.values())
+        all_s = sum(m.get('success', 0) for m in phases.values())
         all_pct_row = round((all_s/all_t)*100) if all_t > 0 else 0
         all_str = f'<span style="{get_status_class(all_pct_row)}">{all_s:,}/{all_t:,} ({all_pct_row}%)</span>' if all_t > 0 else '-'
 
@@ -145,41 +183,38 @@ for team in ['HO', 'DC', 'Branch']:
                 </tr>
         """
 
-    team_all_t = team_q4_t
-    team_all_s = team_q4_s
-    team_all_pct = round((team_all_s/team_all_t)*100) if team_all_t > 0 else 0
-    team_all_str = f'<span style="{get_status_class(team_all_pct)}">{team_all_s:,}/{team_all_t:,} ({team_all_pct}%)</span>' if team_all_t > 0 else '-'
+    team_q4_pct = round((team_q4_s/team_q4_t)*100) if team_q4_t > 0 else 0
+    team_q4_str = f'<span style="{get_status_class(team_q4_pct)}">{team_q4_s:,}/{team_q4_t:,} ({team_q4_pct}%)</span>' if team_q4_t > 0 else '-'
+    team_all_str = f'<span style="{get_status_class(all_pct)}">{team_all_s:,}/{team_all_t:,} ({all_pct}%)</span>' if team_all_t > 0 else '-'
+    team_q4_n = team_q4_t - team_q4_s
     team_all_n = team_all_t - team_all_s
 
-    if team_all_t > 0:
-        gt_color, gt_shadow = get_chart_color(team_all_pct)
-        gt_html = f"""<div style="margin-bottom: 6px; font-weight: bold; color: #fff;">Grand Total (ผลรวม)</div>
-                        <div style="width: 100%; max-width: 180px; margin-top: 5px;">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 3px;">
-                                <span style="color: {gt_color}; font-weight: bold;">{team_all_pct}%</span>
-                                <span style="color: #9ca3af;">{team_all_s:,} / {team_all_t:,}</span>
-                            </div>
-                            <div style="height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; position: relative;">
-                                <div style="height: 100%; background: {gt_color}; width: {team_all_pct}%; border-radius: 3px; box-shadow: 0 0 5px {gt_shadow};"></div>
-                            </div>
-                        </div>"""
-    else:
-        gt_html = f"""<div style="font-weight: bold; color: #fff;">Grand Total (ผลรวม)</div>"""
+    gt_color, gt_shadow = get_chart_color(all_pct)
+    gt_html = f"""<div style="margin-bottom: 6px; font-weight: bold; color: #fff;">Grand Total (ผลรวมทีม {team})</div>
+                    <div style="width: 100%; max-width: 180px; margin-top: 5px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 3px;">
+                            <span style="color: {gt_color}; font-weight: bold;">{all_pct}%</span>
+                            <span style="color: #9ca3af;">{team_all_s:,} / {team_all_t:,}</span>
+                        </div>
+                        <div style="height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; position: relative;">
+                            <div style="height: 100%; background: {gt_color}; width: {all_pct}%; border-radius: 3px; box-shadow: 0 0 5px {gt_shadow};"></div>
+                        </div>
+                    </div>"""
 
     html_tables += f"""
                 <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
                     <td style="font-weight: 800; font-size: 0.85rem;">{gt_html}</td>
-                    <td style="font-weight: 800; font-size: 0.85rem;">{team_all_str}</td>
+                    <td style="font-weight: 800; font-size: 0.85rem;">{team_q4_str}</td>
                     <td style="font-weight: 800; font-size: 0.85rem;">{team_all_str}</td>
                 </tr>
                 <tr style="background: rgba(16, 185, 129, 0.1);">
                     <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">Total Y (สำเร็จ)</td>
-                    <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">{team_all_s:,}</td>
+                    <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">{team_q4_s:,}</td>
                     <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-emerald);">{team_all_s:,}</td>
                 </tr>
                 <tr style="background: rgba(244, 63, 94, 0.1);">
                     <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">Total N (รอดำเนินการ)</td>
-                    <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">{team_all_n:,}</td>
+                    <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">{team_q4_n:,}</td>
                     <td style="font-weight: 700; font-size: 0.8rem; color: var(--accent-rose);">{team_all_n:,}</td>
                 </tr>
             </tbody>
@@ -188,36 +223,45 @@ for team in ['HO', 'DC', 'Branch']:
     """
 
 # ====================================================
-# BU MATRIX GENERATION
+# BU MATRIX GENERATION (FULL Q4 SCOPE)
 # ====================================================
 bu_html = """
 <div class="summary-info-card" style="grid-column: 1 / -1; margin-top: 30px; border: 1px dashed rgba(255, 255, 255, 0.3);">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h4 style="font-size: 1.2rem; margin: 0; color: var(--accent-blue);">🏢 สรุปผลตาม Business Unit (BU Matrix) แยกตามทีม Q4</h4>
+        <div>
+            <h4 style="font-size: 1.2rem; margin: 0; color: var(--accent-blue);">🏢 สรุปผลตาม Business Unit (BU Matrix) แยกตามทีม Q4 (Overall Scope: 5,092 Targets)</h4>
+            <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 5px;">สรุปข้อมูลครอบคลุมอุปกรณ์ในขอบเขตการตรวจประเมินของแต่ละ Business Unit ครบทั้ง 9 หมวดหมู่งาน</div>
+        </div>
     </div>
 """
 
-for team in ['HO', 'DC', 'Branch']:
+for team in sorted_teams:
     bu_data = {}
+    col_topic_totals = {tid: {'total': 0, 'success': 0} for tid in topic_order}
     for tid in topic_order:
         phases = data.get(team, {}).get(tid, {})
         for phase, metrics in phases.items():
-            if phase in ['Q4', 'ALL']:
-                bu_breakdown = metrics.get('bu_breakdown', {})
-                for bu, nums in bu_breakdown.items():
-                    if bu not in bu_data: bu_data[bu] = {}
-                    if tid not in bu_data[bu]: bu_data[bu][tid] = {'success': 0, 'total': 0}
-                    bu_data[bu][tid]['success'] += nums['success']
-                    bu_data[bu][tid]['total'] += nums['total']
+            bu_breakdown = metrics.get('bu_breakdown', {})
+            for bu, nums in bu_breakdown.items():
+                if bu not in bu_data: bu_data[bu] = {}
+                if tid not in bu_data[bu]: bu_data[bu][tid] = {'success': 0, 'total': 0}
+                bu_data[bu][tid]['success'] += nums.get('success', 0)
+                bu_data[bu][tid]['total'] += nums.get('total', 0)
+                col_topic_totals[tid]['success'] += nums.get('success', 0)
+                col_topic_totals[tid]['total'] += nums.get('total', 0)
 
     if not bu_data: continue
 
-    medal = '🥇' if team == 'HO' else ('🥈' if team == 'DC' else '🥉')
+    medal = medals.get(team, '')
+    st = team_metrics[team]
 
     bu_html += f"""
-    <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if team=='HO' else ''} margin-bottom: 20px;">
+    <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if medal=='🥇' else ''} margin-bottom: 25px;">
         <div class="rank-header">
             <span class="rank-name" style="font-size: 1.15rem;">{medal} ทีม {team} - BU Breakdown</span>
+            <span class="rank-val" style="font-size: 1rem; color: {get_text_color(st['all_pct'])};">
+                ภาพรวมทีม: {st['all_pct']}% ({st['all_success']:,} / {st['all_total']:,})
+            </span>
         </div>
         <div style="overflow-x: auto;">
             <table class="detailed-table" style="min-width: 800px; text-align: center;">
@@ -257,7 +301,43 @@ for team in ['HO', 'DC', 'Branch']:
             bu_html += "<td><span style='color: #4b5563;'>-</span></td>"
         bu_html += "</tr>"
 
+    # Add Grand Total row for this team's BU table
+    team_gt_s = sum(col_topic_totals[tid]['success'] for tid in topic_order)
+    team_gt_t = sum(col_topic_totals[tid]['total'] for tid in topic_order)
+    team_gt_pct = round((team_gt_s/team_gt_t)*100) if team_gt_t > 0 else 0
+    gt_col, _ = get_chart_color(team_gt_pct)
+
+    bu_html += f"""<tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2); font-weight: bold;">
+        <td style="text-align: left; position: sticky; left: 0; background: #1e293b; color: #fff;">Grand Total ({team})</td>"""
+    for tid in topic_order:
+        ts = col_topic_totals[tid]['success']
+        tt = col_topic_totals[tid]['total']
+        if tt > 0:
+            tpct = round((ts/tt)*100)
+            tc, _ = get_chart_color(tpct)
+            bu_html += f"<td><span style='color: {tc}; font-weight: bold;'>{tpct}%</span><br><span style='font-size: 0.65rem; color: #9ca3af;'>{ts:,}/{tt:,}</span></td>"
+        else:
+            bu_html += "<td><span style='color: #4b5563;'>-</span></td>"
+
+    bu_html += f"<td><span style='color: {gt_col}; font-weight: bold;'>{team_gt_pct}%</span><br><span style='font-size: 0.65rem; color: #9ca3af;'>{team_gt_s:,}/{team_gt_t:,}</span></td></tr>"
+
     bu_html += "</tbody></table></div></div>"
+
+# Add Other Teams (RIS No Service / Unassigned) if exists
+if other_all_t > 0:
+    bu_html += f"""
+    <div class="ranking-item" style="border: 1px dashed rgba(255, 255, 255, 0.2); margin-bottom: 25px;">
+        <div class="rank-header">
+            <span class="rank-name" style="font-size: 1.15rem;">⚙️ กลุ่ม Unassigned / RIS No Service (อุปกรณ์รอตรวจสอบสังกัด)</span>
+            <span class="rank-val" style="font-size: 1rem; color: var(--accent-rose);">
+                0% ({other_all_s:,} / {other_all_t:,})
+            </span>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; margin-bottom: 10px;">
+            ประกอบด้วยเครื่องในหัวข้อ 3 (Require Restart) จำนวน {other_all_t:,} เครื่อง ซึ่งสังกัด RIS No Service
+        </div>
+    </div>
+    """
 
 bu_html += "</div><!-- End of BU Matrix -->"
 html_tables += bu_html
