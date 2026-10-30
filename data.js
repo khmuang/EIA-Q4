@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-10-30 09:30:03
+// Automatically generated for EIA Q4 at 2026-10-30 15:30:03
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -695,7 +695,7 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q4": {
-                "total": 219,
+                "total": 220,
                 "success": 7,
                 "bu_breakdown": {
                     "B2S": {
@@ -711,7 +711,7 @@ const DASHBOARD_DATA = {
                         "success": 1
                     },
                     "CFR": {
-                        "total": 69,
+                        "total": 70,
                         "success": 0
                     },
                     "CLD": {
@@ -1262,7 +1262,7 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 7,
-                "success": 2,
+                "success": 3,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 1,
@@ -1270,7 +1270,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 3,
-                        "success": 1
+                        "success": 2
                     },
                     "RIS": {
                         "total": 1,
@@ -1366,11 +1366,11 @@ const DASHBOARD_DATA = {
         "4": {
             "Q4": {
                 "total": 5,
-                "success": 3,
+                "success": 4,
                 "bu_breakdown": {
                     "CFR": {
                         "total": 3,
-                        "success": 2
+                        "success": 3
                     },
                     "RIS": {
                         "total": 2,
@@ -1404,11 +1404,11 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 5,
-                "success": 0,
+                "success": 1,
                 "bu_breakdown": {
                     "CFR": {
                         "total": 3,
-                        "success": 0
+                        "success": 1
                     },
                     "RIS": {
                         "total": 2,
@@ -1514,7 +1514,7 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 10,
-                "success": 7,
+                "success": 8,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
@@ -1526,7 +1526,7 @@ const DASHBOARD_DATA = {
                     },
                     "CNG": {
                         "total": 2,
-                        "success": 1
+                        "success": 2
                     },
                     "CRC": {
                         "total": 1,
@@ -1548,7 +1548,7 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 7,
-                "success": 6,
+                "success": 7,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1564,7 +1564,7 @@ const DASHBOARD_DATA = {
                     },
                     "CNG": {
                         "total": 2,
-                        "success": 1
+                        "success": 2
                     },
                     "CRP": {
                         "total": 1,
@@ -1577,8 +1577,8 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q4": {
-                "total": 67,
-                "success": 50,
+                "total": 66,
+                "success": 53,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1590,15 +1590,15 @@ const DASHBOARD_DATA = {
                     },
                     "CDG": {
                         "total": 7,
-                        "success": 6
+                        "success": 7
                     },
                     "CFR": {
-                        "total": 17,
-                        "success": 9
+                        "total": 16,
+                        "success": 10
                     },
                     "CLD": {
                         "total": 1,
-                        "success": 0
+                        "success": 1
                     },
                     "CNG": {
                         "total": 1,
@@ -1713,7 +1713,7 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-10-30 09:30:03';
+const LAST_UPDATED = '2026-10-30 15:30:03';
 const ACTIVE_QUARTER = 'Q4';
 const TOPIC_LINKS = {
     "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
