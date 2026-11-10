@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-11-09 15:30:03
+// Automatically generated for EIA Q4 at 2026-11-10 09:30:04
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1160,7 +1160,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 249,
-                "success": 31,
+                "success": 33,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1172,7 +1172,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 36,
-                        "success": 11
+                        "success": 13
                     },
                     "CGHR": {
                         "total": 2,
@@ -1290,7 +1290,7 @@ const DASHBOARD_DATA = {
         "3": {
             "Q4": {
                 "total": 162,
-                "success": 61,
+                "success": 66,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1310,7 +1310,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 46,
-                        "success": 32
+                        "success": 36
                     },
                     "CGHR": {
                         "total": 4,
@@ -1338,7 +1338,7 @@ const DASHBOARD_DATA = {
                     },
                     "MJT": {
                         "total": 5,
-                        "success": 2
+                        "success": 3
                     },
                     "PWB": {
                         "total": 11,
@@ -1404,11 +1404,11 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 5,
-                "success": 2,
+                "success": 3,
                 "bu_breakdown": {
                     "CFR": {
                         "total": 3,
-                        "success": 2
+                        "success": 3
                     },
                     "RIS": {
                         "total": 2,
@@ -1456,7 +1456,7 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 3,
-                "success": 2,
+                "success": 3,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
@@ -1464,7 +1464,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 1,
-                        "success": 0
+                        "success": 1
                     }
                 }
             }
@@ -1514,7 +1514,7 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 10,
-                "success": 8,
+                "success": 9,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
@@ -1522,7 +1522,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 2,
-                        "success": 1
+                        "success": 2
                     },
                     "CNG": {
                         "total": 2,
@@ -1578,7 +1578,7 @@ const DASHBOARD_DATA = {
             },
             "Q4": {
                 "total": 66,
-                "success": 53,
+                "success": 55,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1594,7 +1594,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 16,
-                        "success": 10
+                        "success": 12
                     },
                     "CLD": {
                         "total": 1,
@@ -1713,7 +1713,7 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-11-09 15:30:03';
+const LAST_UPDATED = '2026-11-10 09:30:04';
 const ACTIVE_QUARTER = 'Q4';
 const TOPIC_LINKS = {
     "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
