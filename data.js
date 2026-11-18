@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-11-18 09:30:03
+// Automatically generated for EIA Q4 at 2026-11-18 15:30:03
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -695,7 +695,7 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q4": {
-                "total": 220,
+                "total": 221,
                 "success": 12,
                 "bu_breakdown": {
                     "B2S": {
@@ -747,7 +747,7 @@ const DASHBOARD_DATA = {
                         "success": 0
                     },
                     "PWB": {
-                        "total": 9,
+                        "total": 10,
                         "success": 0
                     },
                     "SSP": {
@@ -1446,7 +1446,7 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 2,
-                "success": 1,
+                "success": 2,
                 "bu_breakdown": {
                     "CNG": {
                         "total": 1,
@@ -1454,7 +1454,7 @@ const DASHBOARD_DATA = {
                     },
                     "RIS": {
                         "total": 1,
-                        "success": 0
+                        "success": 1
                     }
                 }
             },
@@ -1476,7 +1476,7 @@ const DASHBOARD_DATA = {
         "7": {
             "Q1": {
                 "total": 31,
-                "success": 28,
+                "success": 29,
                 "bu_breakdown": {
                     "CFR": {
                         "total": 13,
@@ -1492,7 +1492,7 @@ const DASHBOARD_DATA = {
                     },
                     "CRP": {
                         "total": 8,
-                        "success": 7
+                        "success": 8
                     },
                     "FAST": {
                         "total": 4,
@@ -1518,7 +1518,7 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 10,
-                "success": 9,
+                "success": 10,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
@@ -1542,7 +1542,7 @@ const DASHBOARD_DATA = {
                     },
                     "SCM": {
                         "total": 1,
-                        "success": 0
+                        "success": 1
                     },
                     "SSP": {
                         "total": 1,
@@ -1581,8 +1581,8 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q4": {
-                "total": 66,
-                "success": 59,
+                "total": 65,
+                "success": 61,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1614,7 +1614,7 @@ const DASHBOARD_DATA = {
                     },
                     "CRP": {
                         "total": 4,
-                        "success": 3
+                        "success": 4
                     },
                     "CU": {
                         "total": 2,
@@ -1633,7 +1633,7 @@ const DASHBOARD_DATA = {
                         "success": 1
                     },
                     "PWB": {
-                        "total": 3,
+                        "total": 2,
                         "success": 2
                     },
                     "RIS": {
@@ -1646,7 +1646,7 @@ const DASHBOARD_DATA = {
                     },
                     "SSP": {
                         "total": 15,
-                        "success": 14
+                        "success": 15
                     }
                 }
             }
@@ -1713,7 +1713,7 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-11-18 09:30:03';
+const LAST_UPDATED = '2026-11-18 15:30:03';
 const ACTIVE_QUARTER = 'Q4';
 const TOPIC_LINKS = {
     "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
