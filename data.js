@@ -1,4 +1,4 @@
-// Automatically generated for EIA Q4 at 2026-11-23 11:13:36
+// Automatically generated for EIA Q4 at 2026-11-23 15:58:40
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1164,7 +1164,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 249,
-                "success": 58,
+                "success": 59,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1176,7 +1176,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 36,
-                        "success": 19
+                        "success": 20
                     },
                     "CGHR": {
                         "total": 2,
@@ -1294,7 +1294,7 @@ const DASHBOARD_DATA = {
         "3": {
             "Q4": {
                 "total": 162,
-                "success": 78,
+                "success": 82,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1314,7 +1314,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 46,
-                        "success": 39
+                        "success": 43
                     },
                     "CGHR": {
                         "total": 4,
@@ -1713,7 +1713,7 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-11-23 11:13:36';
+const LAST_UPDATED = '2026-11-23 15:58:40';
 const ACTIVE_QUARTER = 'Q4';
 const TOPIC_LINKS = {
     "1.1": "https://centralgroup.sharepoint.com/:x:/s/RISEndpointsupport/IQCI9bDM1zixSLGuZY8U6WoQAZDyq3TTZHzfcPGuSzuBIuE?e=eqzeKV",
